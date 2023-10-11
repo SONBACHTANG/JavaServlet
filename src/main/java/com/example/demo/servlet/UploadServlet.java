@@ -34,7 +34,7 @@ public class UploadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            Part part = req.getPart("fileeeee");
+            Part part = req.getPart("file");
             String realPath = req.getServletContext().getRealPath("/images");
             String filename = Path.of(part.getSubmittedFileName()).getFileName().toString();
             if(!Files.exists(Path.of(realPath))){
