@@ -1,10 +1,9 @@
 package com.example.demo.filter;
 
+
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.annotation.*;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
@@ -18,12 +17,12 @@ public class AuthenFilter implements Filter {
             HttpServletRequest request = (HttpServletRequest) servletRequest;
             HttpServletResponse response = (HttpServletResponse) servletResponse;
             HttpSession session = request.getSession();
-            String username = (String)session.getAttribute("username");
+            String username = (String) session.getAttribute("username");
             String uri = request.getRequestURI();
             if (username == null) {
                 response.sendRedirect("login-servlet");
             }
-            filterChain.doFilter(request,response);
+            filterChain.doFilter(request, response);
 
 
         } catch (Exception ex) {
